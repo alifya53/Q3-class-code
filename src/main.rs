@@ -19,9 +19,9 @@
 // use futures::executor::block_on;
 // use std::time::Duration;
 
-// `block_on` blocks the current thread until the provided future has run to
-// completion. Other executors provide more complex behavior, like scheduling
-// multiple futures onto the same thread.
+// // `block_on` blocks the current thread until the provided future has run to
+// // completion. Other executors provide more complex behavior, like scheduling
+// // multiple futures onto the same thread.
 // use futures::executor::block_on;
 
 // async fn hello_world() {
@@ -70,10 +70,20 @@
 use std::thread;
 // use futures::executor::block_on;
 use std::time::Duration;
-
+fn dance_1(){
+    thread::sleep(Duration::from_secs(3));
+    println!("I am Dancing on the song");  
+}
 fn main(){
+fn dance(){
+    thread::sleep(Duration::from_secs(5));
+    println!("I am Dancing on the song on dance function"); 
+}    
 learn_song();
 sing_song();
+dance(); 
+dance_1();
+
 }
 fn sing_song() {
     thread::sleep(Duration::from_secs(2));
