@@ -68,33 +68,18 @@
 
 
 use std::thread;
+// use futures::executor::block_on;
 use std::time::Duration;
-learn_song ();
-sing_song ();
-dance ();
-fn learn_song() {
-    thread::sleep(Duration::from_secs(2));
-    println!("I learned and Love this song!!");
-}
-fn sing_song(){
-    thread::sleep(Duration::from_secs(3));
-    println!("I am singing this song ! its lovely!!");
-}
-fn dance(){
-    thread::sleep(Duration::from_sec(5));
-    println!("I will dance until someonne stops me!!!")
-}
- fn learn_and_sing() {
-        // Wait until the song has been learned before singing it.
-        // We use `.await` here rather than `block_on` to prevent blocking the
-        // thread, which makes it possible to `dance` at the same time.
-        let song = learn_song().await;
-        sing_song(song).await;
-    }
 
 fn main(){
-    let f1 = learn_and_sing();
-    let f2 = dance();
-
-
+learn_song();
+sing_song();
+}
+fn sing_song() {
+    thread::sleep(Duration::from_secs(2));
+    println!("I am singing the song");
+}
+fn learn_song(){
+    thread::sleep(Duration::from_secs(2));
+    println!("I am learning the song");
 }
